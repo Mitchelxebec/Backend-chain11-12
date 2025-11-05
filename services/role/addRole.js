@@ -3,7 +3,6 @@ const Role = require('../../models/Role');
 
 
 const addRole = async (req, res, next) => {
-
     try {
         const { name } = req.body;
 
@@ -18,7 +17,6 @@ const addRole = async (req, res, next) => {
         const savedRole = await newRole.save();
 
         return savedRole;
-
     } catch (error) {
         console.error('Error creating role:', error);
         throw new ErrorResponse(`Server error: ${error}`, 500);
