@@ -1,3 +1,4 @@
+const { ref } = require('joi');
 const mongoose = require('mongoose');
 
 
@@ -11,7 +12,8 @@ const actionSchema = mongoose.Schema(
             unique: true
         },
         role: {
-            type: mongoose.Schema.ObjectId()
+            type: mongoose.Schema.ObjectId,
+            ref : 'Role'
         },
         status: {
             type: Boolean,
