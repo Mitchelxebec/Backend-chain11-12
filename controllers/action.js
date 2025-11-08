@@ -1,5 +1,5 @@
 const asyncHandler = require("../middlewares/asyncHandler");
-const { addAction } = require("../services/section");
+const { addAction } = require("../services/action");
 const Action = require("../models/Action");
 const ErrorResponse = require("../utils/errorResponse");
 

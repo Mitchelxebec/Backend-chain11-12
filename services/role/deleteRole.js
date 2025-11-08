@@ -13,7 +13,7 @@ const deleteRole = async (req, res, next) => {
             throw new ErrorResponse(`Role not found`, 400);
         }
 
-        await User.findByIdAndDelete({_id: roleId});
+        await Role.findByIdAndDelete({_id: roleId});
         const metaData = {}
         const data = {}
 

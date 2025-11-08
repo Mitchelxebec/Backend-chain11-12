@@ -19,7 +19,7 @@ const {
 } = require("../controllers/role");
 
 
-const {validateAddAction} = require('../validators/section/section');
+const {validateAddAction} = require('../validators/action/section');
 const{
     addAction,
     getAction,
@@ -42,15 +42,15 @@ router.delete('/delete-user', protect, verified, validateDeleteUserObj, deleteUs
 router.post('/role', protect, verified, isAdmin, validateAddRole,  addRole);
 router.get('/role', protect, verified,  isAdmin, validateGetRole, getRole);
 router.get('/roles', protect, verified,  isAdmin, getRoles);
-router.put('/update-role', protect, verified, isAdmin, validateUpdateRole, updateRole);
-router.put('/delete-role', protect, verified, isAdmin, validateDeleteRole, deleteRole);
+router.put('/roles/update-role', protect, verified, isAdmin, validateUpdateRole, updateRole);
+router.delete('/roles/delete-role', protect, verified, isAdmin, validateDeleteRole, deleteRole);
 
-router.post('/actions', protect, verified, validateAddAction, addAction);
-router.get('/actions/:id',  protect, verified, getAction);
+router.post('/action', protect, verified, validateAddAction, addAction);
+router.get('/action/:id',  protect, verified, getAction);
 router.get('/actions',  protect, verified, getActions);
 router.get('/actions/role/:roleId',  protect, verified, getActionsByRole);
-router.put('/actions/:id',  protect, verified, updateAction);
-router.delete('/actions/:id',  protect, verified, deleteAction);
+router.put('/action/:id',  protect, verified, updateAction);
+router.delete('/action/:id',  protect, verified, deleteAction);
 
 
 module.exports = router;
