@@ -19,7 +19,7 @@ const {
 } = require("../controllers/role");
 
 
-const {validateAddAction} = require('../validators/section/section');
+const {validateAddAction} = require('../validators/action/section');
 const{
     addAction,
     getAction,
