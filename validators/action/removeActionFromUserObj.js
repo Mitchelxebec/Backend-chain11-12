@@ -6,7 +6,7 @@ const removeroleschema =joi.object({
     roleId: joi.string().required()
 });
 
-const validateremoveRoletoUser = async (req, res, next)=>{
+const validateRemoveActiontoUser = async (req, res, next)=>{
    try{
         if(!req.body || Object.keys(req.body).length === 0){
             return next(new ErrorResponse(`Request body is empty`, 400));
@@ -18,4 +18,4 @@ const validateremoveRoletoUser = async (req, res, next)=>{
     return next(new ErrorResponse(`something went wrong: ${err}`, 500));
    }
 }
-module.exports= validateremoveRoletoUser
+module.exports= validateRemoveActiontoUser

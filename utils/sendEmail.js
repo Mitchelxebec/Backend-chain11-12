@@ -20,6 +20,9 @@ const sendEmail = async (options) => {
   };
 
   const info = await transporter.sendMail(message);
+  if(!info){
+    // second method - Resend[third party]
+  }
 
   console.log("Message sent: %s", info.messageId);
 };
