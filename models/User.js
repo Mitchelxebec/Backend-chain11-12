@@ -39,10 +39,10 @@ const userSchema = mongoose.Schema({
         enum: ['admin', 'user'],
         default: 'user'
     },
-    roles: [
+    actions: [
         {
             type: mongoose.Schema.ObjectId,
-            ref: 'Role'
+            ref: 'Action'
         }
     ],
     lastLogin: {

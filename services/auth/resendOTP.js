@@ -22,7 +22,7 @@ const resendOTP = async (req, res, next) => {
 
     const message = `Welcome to our business.\nPlease verify you email.\nYour One Time Password is: <span>${otp}</span>.`
 
-    // await sendEmail({email: user.email, subject: "Registration Verification", text: '', html: message}, []);
+    await sendEmail({email: user.email, subject: "Registration Verification", text: '', html: message});
 
     return {
         "data": {otp, converted},

@@ -1,5 +1,5 @@
 const asyncHandler = require("../middlewares/asyncHandler");
-const { addAction, updateAction } = require("../services/action");
+const { addAction, updateAction, removeActionfromUser, addActionToUser } = require("../services/action");
 const Action = require("../models/Action");
 const ErrorResponse = require("../utils/errorResponse");
 
@@ -66,4 +66,22 @@ exports.deleteAction = asyncHandler(async (req, res, next) => {
     success: true,
     message: "Action deleted successfully"
   });
+});
+
+exports.removeActionfromUser = asyncHandler(async (req, res, next) => {
+    const result = await removeActionfromUser(req, res, next);
+    res.status(200).json({
+        "success": true,
+        "message": "Action removed successful",
+        "data": result
+    });
+});
+
+exports.addActionToUser = asyncHandler(async (req, res, next) => {
+    const result = await addActionToUser(req, res, next);
+    res.status(200).json({
+        "success": true,
+        "message": "Action added successful",
+        "data": result
+    });
 });
