@@ -3,4 +3,5 @@ module.exports = {
     validateRegisterObj: require("./register"),
     validateVerificationObj: require('./verify'),
     validateOTPObj: require("./resentOTP"),
+    ValidateResetPassword: require("./resetPassword"),
 };

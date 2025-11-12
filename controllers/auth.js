@@ -4,6 +4,8 @@ const {
     register,
     verify,
     resendOTP,
+    resetPassword,
+    logoutUser
 } = require("../services/auth");
 
 exports.login = asyncHandler(async (req, res, next) => {
@@ -38,6 +40,26 @@ exports.resendOTP = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         "success": true,
         "message": "OTP Sent",
+        "data": result
+    })
+});
+
+exports.forgotPassword = asyncHandler(async (req, res, next) => {
+    const result = await resetPassword(req, res, next);
+    res.status(200).json({
+        "success": true,
+        "message": "password set succesfully",
+        "data": result
+    })
+});
+
+exports.logout = asyncHandler(async (req, res) => {
+    const head = req.headers.authorization;
+    token =  head?.split(" ")[1];
+    const result = await logoutUser(token);
+    res.status(200).json({
+        "success": true,
+        "message": "logout succesfully",
         "data": result
     })
 });

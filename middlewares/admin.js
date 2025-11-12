@@ -34,9 +34,11 @@ exports.verified = asyncHandler(async (req, res, next) => {
 });
 
 exports.isAdmin = asyncHandler(async (req, res, next) => {
-    const userRole = req.user.role
+    const userRole = req.user.role;
     if(userRole !== 'admin'){
         next(new ErrorResponse(`You are not an admin`, 400));
     }
     return next();
 })
+
+
