@@ -19,7 +19,12 @@ const {
 } = require("../controllers/role");
 
 
-const {validateAddAction, validateUpdateAction, validateAddActiontoUser, validateRemoveActiontoUser} = require('../validators/action/section');
+const {
+    validateAddAction, 
+    validateUpdateAction, 
+    validateAddActiontoUser, 
+    validateRemoveActionFromUser
+} = require("../validators/action");
 const{
     addAction,
     getAction,
@@ -50,13 +55,12 @@ router.put('/role/update-role', protect, verified, isAdmin, validateUpdateRole, 
 router.delete('/roles/delete-role', protect, verified, isAdmin, validateDeleteRole, deleteRole);
 
 router.post('/action', protect, verified, validateAddAction, addAction);
-router.get('/action/:id',protect, verified, getAction);
 router.get('/actions',  protect, verified, getActions);
+router.put('/action/add-action-to-user', protect, verified, isAdmin, validateAddActiontoUser, removeActionfromUser);
+router.put('/action/remove-action-from-user',protect,verified, isAdmin, validateRemoveActionFromUser,addActionToUser);
+router.get('/action/:id',protect, verified, getAction);
 router.get('/actions/role/:roleId',  protect, verified, getActionsByRole);
 router.put('/action/:id',  protect, verified, validateUpdateAction, updateAction);
 router.delete('/action/:id',  protect, verified, deleteAction);
-router.put('/action/add-action-to-user', protect, verified, isAdmin, validateAddActiontoUser, removeActionfromUser);
-router.put('/action/remove-action-from-user',protect,verified, isAdmin,validateRemoveActiontoUser,addActionToUser);
-
 
 module.exports = router;
