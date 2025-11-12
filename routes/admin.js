@@ -15,7 +15,8 @@ const {
     getRole,
     getRoles,
     updateRole,
-    deleteRole
+    deleteRole,
+    addUserRole
 } = require("../controllers/role");
 
 
@@ -29,8 +30,7 @@ const{
     deleteAction
 } = require("../controllers/Action");
 
-const { validateAddRole, validateGetRole, validateUpdateRole, validateDeleteRole } = require('../validators/role');
-
+const { validateAddRole, validateGetRole, validateUpdateRole, validateDeleteRole, validateUserRole } = require('../validators/role');
 
 router.get('/get-user', protect, verified, isAdmin, getUser);
 router.delete('/delete-user', protect, verified, isAdmin, validateDeleteUserObj, deleteUser);
@@ -44,6 +44,7 @@ router.get('/role', protect, verified,  isAdmin, validateGetRole, getRole);
 router.get('/roles', protect, verified,  isAdmin, getRoles);
 router.put('/roles/update-role', protect, verified, isAdmin, validateUpdateRole, updateRole);
 router.delete('/roles/delete-role', protect, verified, isAdmin, validateDeleteRole, deleteRole);
+router.put("/role/user", protect, verified, isAdmin, validateUserRole, addUserRole)
 
 router.post('/action', protect, verified, validateAddAction, addAction);
 router.get('/action/:id',  protect, verified, getAction);
