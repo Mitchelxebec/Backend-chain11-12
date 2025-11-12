@@ -15,9 +15,10 @@ const sendEmail = async (options) => {
     from: `Developer <akpe@venireapp.com>`,
     to: options.email,
     subject: options.subject,
-    html: options.message,
-    text: options.body,
+    html: options.html,
+    text: options.text,
   };
+console.log("🧠 Received options:", options);
 
   const info = await transporter.sendMail(message);
 
