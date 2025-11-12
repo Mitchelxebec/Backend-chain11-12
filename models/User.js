@@ -36,12 +36,13 @@ const userSchema = mongoose.Schema({
     },
     role: {
         type: String,
-        // type: Enumerator('admin', 'user'),
+        enum: ['admin', 'user'],
         default: 'user'
     },
     roles: [
         {
-            type: mongoose.Schema.ObjectId
+            type: mongoose.Schema.ObjectId,
+            ref: 'Role'
         }
     ],
     lastLogin: {

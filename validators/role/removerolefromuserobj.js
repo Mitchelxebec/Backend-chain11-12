@@ -2,8 +2,8 @@ const joi = require('joi');
 const ErrorResponse = require('../../utils/errorResponse');
 
 const removeroleschema =joi.object({
-    userID: joi.string().required(),
-    RoleID: joi.string().required()
+    userId: joi.string().required(),
+    roleId: joi.string().required()
 });
 
 const validateremoveRoletoUser = async (req, res, next)=>{

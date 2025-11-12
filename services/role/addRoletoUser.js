@@ -4,19 +4,19 @@ const ErrorResponse = require('../../utils/errorResponse');
 
 const addRoleToUser = async (req, res, next)=>{
     try{
-    const {userID, RoleID}= req.body;
-    const user = await User.findById(userID);
+    const {userId, roleId}= req.body;
+    const user = await User.findById(userId);
     if(!user){
         throw new ErrorResponse('user not found', 400);
     }
-    const role = await Role.findById(RoleID);
+    const role = await Role.findById(roleId);
     if(!role){
         throw new ErrorResponse('Role not found',400);
     }
-    if(user.roles && user.roles.includes(RoleID)){
+    if(user.roles && user.roles.includes(roleId)){
         throw new ErrorResponse('User already has this role');
     }
-    user.roles = user.roles?[...user.roles, RoleID]:[RoleID];
+    user.roles = user.roles?[...user.roles, roleId]:[roleId];
     await user.save();
     return{
         message:`Role ${role.name} added to user ${user.firstname} succesfully`
