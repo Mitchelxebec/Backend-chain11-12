@@ -5,5 +5,6 @@ module.exports = {
     getRoles: require("./getRoles"),
     updateRole: require("./updateRole"),
     deleteRole: require("./deleteRole"),
-    addUserRole : require("./addUserRole"),
+    addRoleToUser: require("./addRoletoUser"),
+    removeRolefromUser: require("./removeRolefromUser")
 }

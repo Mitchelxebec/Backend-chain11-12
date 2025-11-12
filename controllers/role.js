@@ -5,7 +5,8 @@ const {
     getRoles,
     updateRole,
     deleteRole,
-    addUserRole,
+    addRoleToUser,
+    removeRolefromUser
 } = require("../services/role");
 
 exports.addRole = asyncHandler(async (req, res, next) => {
@@ -54,11 +55,20 @@ exports.deleteRole = asyncHandler(async (req, res, next) => {
     });
 });
 
-exports.addUserRole = asyncHandler(async (req, res, next) => {
-    const result = await addUserRole(req, res, next);
+exports.addRoleToUserRole = asyncHandler(async (req, res, next) => {
+    const result = await addRoleToUser(req, res, next);
     res.status(200).json({
         "success": true,
         "message": "Role added successful",
+        "data": result
+    });
+});
+
+exports.removeRolefromUserRole = asyncHandler(async (req, res, next) => {
+    const result = await removeRolefromUser(req, res, next);
+    res.status(200).json({
+        "success": true,
+        "message": "Role removed successful",
         "data": result
     });
 });

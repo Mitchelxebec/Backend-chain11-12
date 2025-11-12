@@ -4,4 +4,5 @@ module.exports = {
   verify: require("./verify_email"),
   resendOTP: require("./resendOTP"),
   logout: require("./logout"),
+  resetPassword: require("./forgotpassword"),
 };

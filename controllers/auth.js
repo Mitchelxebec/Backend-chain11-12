@@ -1,5 +1,13 @@
 const asyncHandler = require("../middlewares/asyncHandler");
-const { login, register, verify, resendOTP, logout } = require("../services/auth");
+
+const { 
+    login,
+    register,
+    verify,
+    resendOTP,
+    resetPassword,
+    logout
+} = require("../services/auth");
 
 exports.login = asyncHandler(async (req, res, next) => {
   const result = await login(req, res, next);
@@ -44,3 +52,13 @@ exports.logout = asyncHandler(async (req, res, next) => {
     message: result.message,
   });
 });
+
+exports.resetPassword = asyncHandler(async (req, res, next) => {
+    const result = await resetPassword(req, res, next);
+    res.status(200).json({
+        "success": true,
+        "message": "password set succesfully",
+        "data": result
+    })
+});
+

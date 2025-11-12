@@ -10,14 +10,18 @@
 
 
 ### Assignment:
--PUT Request to update a Action
 
--PUT Request to add a  role to a user
--PUT Request to remove a role from a user
+-PUT Request to add a role to a user.
+-PUT Request to remove a role from a user.
 
 ### Assignment:
-
-- Write the logout endpoint.
+    - Write the logout endpoint.
 
 ### Assignment
- - Deploy this project on render (main branch - https://github.com/Akwanw3/Chain11-Backend-Project)
+    - Deploy this project on render (main branch - https://github.com/Akwanw3/Chain11-Backend-Project)
+
+### Assignment
+    - Write the forgot and reset password endpoints
+
+###  Assignment
+    - Create a postman documentation for the project, add everyone to it.

@@ -1,5 +1,5 @@
 const asyncHandler = require("../middlewares/asyncHandler");
-const { addAction } = require("../services/action");
+const { addAction, updateAction } = require("../services/action");
 const Action = require("../models/Action");
 const ErrorResponse = require("../utils/errorResponse");
 
@@ -49,12 +49,7 @@ exports.getActionsByRole = asyncHandler(async (req, res, next) => {
 
 // PUT - Update Action
 exports.updateAction = asyncHandler(async (req, res, next) => {
-  const updated = await Action.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true
-  });
-  if (!updated) return next(new ErrorResponse("Action not found", 404));
-
+   const updated = await updateAction(req, res, next)
   res.status(200).json({
     success: true,
     message: "Action updated successfully",

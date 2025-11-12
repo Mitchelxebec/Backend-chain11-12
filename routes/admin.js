@@ -16,11 +16,12 @@ const {
     getRoles,
     updateRole,
     deleteRole,
-    addUserRole
+    addRoleToUserRole,
+    removeRolefromUserRole
 } = require("../controllers/role");
 
 
-const {validateAddAction} = require('../validators/action/section');
+const {validateAddAction, validateUpdateAction} = require('../validators/action/section');
 const{
     addAction,
     getAction,
@@ -30,9 +31,12 @@ const{
     deleteAction
 } = require("../controllers/Action");
 
-const { validateAddRole, validateGetRole, validateUpdateRole, validateDeleteRole, validateUserRole } = require('../validators/role');
+const { validateAddRole, validateGetRole, validateUpdateRole, validateDeleteRole, validateAddRoletoUser, validateremoveRoletoUser } = require('../validators/role');
 
-router.get('/get-user', protect, verified, isAdmin, getUser);
+
+
+
+router.get('/get-user', protect,  verified, isAdmin, getUser);
 router.delete('/delete-user', protect, verified, isAdmin, validateDeleteUserObj, deleteUser);
 
 
@@ -42,15 +46,16 @@ router.delete('/delete-user', protect, verified, validateDeleteUserObj, deleteUs
 router.post('/role', protect, verified, isAdmin, validateAddRole,  addRole);
 router.get('/role', protect, verified,  isAdmin, validateGetRole, getRole);
 router.get('/roles', protect, verified,  isAdmin, getRoles);
-router.put('/roles/update-role', protect, verified, isAdmin, validateUpdateRole, updateRole);
+router.put('/role/update-role', protect, verified, isAdmin, validateUpdateRole, updateRole);
 router.delete('/roles/delete-role', protect, verified, isAdmin, validateDeleteRole, deleteRole);
-router.put("/role/user", protect, verified, isAdmin, validateUserRole, addUserRole)
+router.put('/role/add-role-to-user', protect, verified, isAdmin, validateAddRoletoUser,addRoleToUserRole);
+router.put('/role/remove-role-from-user',protect,verified, isAdmin,validateremoveRoletoUser,removeRolefromUserRole)
 
 router.post('/action', protect, verified, validateAddAction, addAction);
-router.get('/action/:id',  protect, verified, getAction);
+router.get('/action/:id',protect, verified, getAction);
 router.get('/actions',  protect, verified, getActions);
 router.get('/actions/role/:roleId',  protect, verified, getActionsByRole);
-router.put('/action/:id',  protect, verified, updateAction);
+router.put('/action/:id',  protect, verified, validateUpdateAction, updateAction);
 router.delete('/action/:id',  protect, verified, deleteAction);
 
 
