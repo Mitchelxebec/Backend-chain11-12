@@ -3,4 +3,6 @@ module.exports = {
     register: require("./register"),
     verify: require("./verify_email"),
     resendOTP: require("./resendOTP"),
+    resetPassword: require("./forgotpassword"),
+    logoutUser: require("./logout")
 }

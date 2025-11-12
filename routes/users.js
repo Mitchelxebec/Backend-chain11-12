@@ -5,6 +5,7 @@ const router = express.Router()
 const {update} = require("../controllers/users");
 const {updateObj} = require("../validators/users");
 const { protect, verified } = require("../middlewares/admin");
+const authcheck = require("../middlewares/auth");
 
 
-router.put("/update-profile", protect, verified, update, update);
+router.put("/update-profile",  authcheck, protect, verified, update, update);

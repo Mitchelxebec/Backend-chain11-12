@@ -3,4 +3,6 @@ module.exports = {
     validateGetRole: require("./getRoleObj"),
     validateUpdateRole: require("./updateRoleObj"),
     validateDeleteRole: require("./deleteRoleObj"),
+    validateAddRoletoUser: require("./addRoletoUserObj"),
+    validateremoveRoletoUser: require("./removerolefromuserobj")
 }

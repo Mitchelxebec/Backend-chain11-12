@@ -1,3 +1,4 @@
 module.exports = {
-  validateAddAction: require('./actionObj'),  
+  validateAddAction: require('./actionObj'),
+  validateUpdateAction: require('./updateActionObj'),
 }
