@@ -43,10 +43,10 @@ router.delete('/delete-user', protect, verified, isAdmin, validateDeleteUserObj,
 router.get('/get-user', protect, verified,  getUser);
 router.delete('/delete-user', protect, verified, validateDeleteUserObj, deleteUser);
 
-router.post('/role', protect, authcheck, verified, isAdmin, validateAddRole,  addRole);
+router.post('/role', protect, verified, isAdmin, validateAddRole,  addRole);
 router.get('/role', protect, verified,  isAdmin, validateGetRole, getRole);
 router.get('/roles', protect, verified,  isAdmin, getRoles);
-router.put('/roles/update-role', protect, verified, isAdmin, validateUpdateRole, updateRole);
+router.put('/role/update-role', protect, verified, isAdmin, validateUpdateRole, updateRole);
 router.delete('/roles/delete-role', protect, verified, isAdmin, validateDeleteRole, deleteRole);
 router.put('/role/add-role-to-user', protect, verified, isAdmin, validateAddRoletoUser,addRoleToUserRole);
 router.put('/role/remove-role-from-user',protect,verified, isAdmin,validateremoveRoletoUser,removeRolefromUserRole)
