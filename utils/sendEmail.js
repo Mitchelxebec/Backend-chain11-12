@@ -21,6 +21,9 @@ const sendEmail = async (options) => {
 console.log("🧠 Received options:", options);
 
   const info = await transporter.sendMail(message);
+  if(!info){
+    // second method - Resend[third party]
+  }
 
   console.log("Message sent: %s", info.messageId);
 };

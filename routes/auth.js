@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const {
@@ -7,13 +7,15 @@ const {
     verify,
     resendOTP,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    logout
 } = require("../controllers/auth");
 
-const { validateLoginObj, validateRegisterObj, validateVerificationObj, validateOTPObj, ValidateResetPassword, validateforgotpassword } = require('../validators/auth');
+const { validateLoginObj, validateRegisterObj, validateVerificationObj, validateOTPObj, ValidateResetPassword, validateforgotpassword,  validateLogoutObj} = require('../validators/auth');
+    
 
 
-
+router.post("/logout", validateLogoutObj, logout);
 router.post('/login', validateLoginObj,  login);
 router.post('/register', validateRegisterObj, register);
 router.post('/verify', validateVerificationObj, verify);
