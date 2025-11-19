@@ -9,7 +9,6 @@ const {
 const { validateDeleteUserObj } = require('../validators/admin');
 const { protect, verified, isAdmin } = require('../middlewares/admin');
 
-
 const {
     addRole,
     getRole,
@@ -25,6 +24,7 @@ const {
     validateAddActiontoUser, 
     validateRemoveActionFromUser
 } = require("../validators/action");
+
 const{
     addAction,
     getAction,
@@ -38,15 +38,8 @@ const{
 
 const { validateAddRole, validateGetRole, validateUpdateRole, validateDeleteRole } = require('../validators/role');
 
-
-
-
 router.get('/get-user', protect,  verified, isAdmin, getUser);
 router.delete('/delete-user', protect, verified, isAdmin, validateDeleteUserObj, deleteUser);
-
-
-router.get('/get-user', protect, verified,  getUser);
-router.delete('/delete-user', protect, verified, validateDeleteUserObj, deleteUser);
 
 router.post('/role', protect, verified, isAdmin, validateAddRole,  addRole);
 router.get('/role', protect, verified,  isAdmin, validateGetRole, getRole);
