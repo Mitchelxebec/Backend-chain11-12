@@ -2,7 +2,7 @@ const joi = require("joi");
 const ErrorResponse = require("../../utils/errorResponse");
 
 const logoutSchema = joi.object({
-  _id: joi.string().length(24).hex().required(),
+  id: joi.string().length(24).hex().required(),
 });
 
 const validateLogoutObj = async (req, res, next) => {
