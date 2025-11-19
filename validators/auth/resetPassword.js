@@ -2,7 +2,7 @@ const joi = require('joi');
 const ErrorResponse = require('../../utils/errorResponse');
 
 const passwordresetschema = joi.object({
-    email : joi.string().required(),
+    token : joi.string().required(),
     Password: joi.string().min(6).max(15).required(),
     confirmPassword: joi.string().required()
 

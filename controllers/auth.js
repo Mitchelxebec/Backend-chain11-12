@@ -6,6 +6,7 @@ const {
     verify,
     resendOTP,
     resetPassword,
+    forgotpassword,
     logout
 } = require("../services/auth");
 
@@ -58,6 +59,15 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         "success": true,
         "message": "password set succesfully",
+        "data": result
+    })
+});
+
+exports.forgotPassword = asyncHandler(async (req, res, next) => {
+    const result = await forgotpassword(req, res, next);
+    res.status(200).json({
+        "success": true,
+        "message": "OTP Sent",
         "data": result
     })
 });
