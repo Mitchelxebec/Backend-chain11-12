@@ -3,7 +3,7 @@ const ErrorResponse = require('../../utils/errorResponse');
 
 const passwordresetschema = joi.object({
     token : joi.string().required(),
-    Password: joi.string().min(6).max(15).required(),
+    password: joi.string().min(6).max(15).required(),
     confirmPassword: joi.string().required()
 
 });

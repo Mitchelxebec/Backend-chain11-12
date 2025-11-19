@@ -3,8 +3,8 @@ const nodemailer = require("nodemailer");
 const sendEmail = async (options) => {
   const transporter = nodemailer.createTransport({
     host: process.env.MAIL_SERVER,
-    port: Number(process.env.MAIL_PORT),
-    secure: process.env.MAIL_SECURE === 'true',
+    port: process.env.MAIL_PORT,
+    secure: process.env.MAIL_SECURE,
     auth: {
       user: process.env.MAIL_USER,
       pass: process.env.MAIL_PASS,
@@ -18,7 +18,7 @@ const sendEmail = async (options) => {
     html: options.html,
     text: options.text,
   };
-console.log("🧠 Received options:", options);
+  console.log("🧠 Received options:", options);
 
   const info = await transporter.sendMail(message);
   if(!info){

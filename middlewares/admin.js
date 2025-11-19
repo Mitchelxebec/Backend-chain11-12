@@ -18,6 +18,8 @@ exports.protect = asyncHandler(async (req, res, next) => {
         if(!user){
             next(new ErrorResponse(`User not found`, 400));
         }
+        // check if the token exist in userToken model
+
         req.user = user
         return next();
     }catch(error){
@@ -40,6 +42,7 @@ exports.isAdmin = asyncHandler(async (req, res, next) => {
     }
     return next();
 })
+
 
 
 
