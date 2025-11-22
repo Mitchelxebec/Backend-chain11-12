@@ -9,13 +9,13 @@ const getRole = async (req, res, next) => {
         // Check if role  exists
         const role = await Role.findById(roleId);
         if (!role) {
-            throw new ErrorResponse('Role deos not exist', 400);
+            throw new ErrorResponse('Role does not exist', 400);
         }
 
         return role;
 
     } catch (error) {
-        console.error('Error creating role:', error);
+        console.error('Error retrieving role:', error);
         throw new ErrorResponse(`Server error: ${error}`, 500);
     }
 };

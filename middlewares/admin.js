@@ -44,6 +44,11 @@ exports.isAdmin = asyncHandler(async (req, res, next) => {
 })
 
 
-
-
+exports.hasRole = (...roles) => asyncHandler(async (req, res, next) => {
+    const userRole = req.user.role;
+    if (!roles.includes(userRole)) {
+        return next(new ErrorResponse(`You do not have permission to perform this action`, 403));
+    }
+    next();
+});
 

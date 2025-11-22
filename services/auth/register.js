@@ -58,7 +58,7 @@ const register = async (req, res, next) => {
 
     const message = `Welcome to our business.\nPlease verify you email.\nYour One Time Password is: <span>${otp}</span>.`
 
-    // await sendEmail({email: email, subject: "Registration Verification", text: '', html: message}, []);
+    await sendEmail({email: email, subject: "Registration Verification", text: '', html: message}, []);
 
     return {
         "data": response,
