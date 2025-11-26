@@ -4,16 +4,17 @@ const ErrorResponse = require("../../utils/errorResponse");
 
 const logout = async (req, res, next) => {
   try {
-    const { id } = req.body;
+    // ✅ Get user ID from req.user
+    const userId = req.user._id;
 
     // 1. Find the user
-    const user = await User.findById(id);
+    const user = await User.findById(userId);
     if (!user) {
       throw new ErrorResponse("User not found", 404);
     }
 
     // 2. Delete ALL tokens for this user
-    await Token.deleteMany({ userId: id });
+    await Token.deleteMany({ userId: userId });
 
     // Optional: reset verification if needed
     // user.isVerified = false;
