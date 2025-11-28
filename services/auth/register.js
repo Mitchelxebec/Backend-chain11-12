@@ -1,69 +1,63 @@
 const User = require("../../models/User");
 const ErrorResponse = require("../../utils/errorResponse");
 let referralCodeGenerator = require("referral-code-generator");
-const randomize = require('randomatic');
+const randomize = require("randomatic");
 const crypto = require("crypto");
 const sendEmail = require("../../utils/sendEmail");
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
+const createUserSession = require("./createUserSession");
 
 const saltRounds = 10;
 
-
 const register = async (req, res, next) => {
-    // business logic
+  // business logic
 
-    const {
-        firstname,
-        lastname,
-        email,
-        password,
-        phone,
-        referredBy
-    } = req.body;
-    
-    let refCode = referralCodeGenerator.custom("lowercase", 6, 3, email);
+  const { firstname, lastname, email, password, phone, referredBy } = req.body;
 
-    const otp = randomize("0", 6);
-    
-    const converted = crypto.createHash('sha256').update(otp).digest('hex');
+  let refCode = referralCodeGenerator.custom("lowercase", 6, 3, email);
 
-    var token = jwt.sign({ email: email }, process.env.JWT_SECRET || 'secret', { expiresIn: '1d' });
+  const otp = randomize("0", 6);
 
-    const convertedPassword = await bcrypt.hash(password, saltRounds);
+  const converted = crypto.createHash("sha256").update(otp).digest("hex");
 
-    const data = {
-        firstname,
-        lastname,
-        email,
-        password: convertedPassword,
-        phone,
-        referralCode: refCode,
-        referredBy: referredBy?.lowercase() || null,
-        verificationCode: converted,
-        verificationExpire: Date.now() + 1000 * 60 * 15, // must be verified within 15 minutes
-    };
+  // var token = jwt.sign({ email: email }, process.env.JWT_SECRET || 'secret', { expiresIn: '1d' });
 
-    const check = await User.findOne({email: email}).select("_id");
-    if(check){
-        throw new ErrorResponse("User already existed", 400);
-    }
+  const convertedPassword = await bcrypt.hash(password, saltRounds);
 
-    const saveData = await User.create(data);
+  const data = {
+    firstname,
+    lastname,
+    email,
+    password: convertedPassword,
+    phone,
+    referralCode: refCode,
+    referredBy: referredBy?.lowercase() || null,
+    verificationCode: converted,
+    verificationExpire: Date.now() + 1000 * 60 * 15, // must be verified within 15 minutes
+  };
 
-    const response = {
-        saveData,
-        token
-    }
+  const check = await User.findOne({ email: email }).select("_id");
+  if (check) {
+    throw new ErrorResponse("User already existed", 400);
+  }
 
-    const message = `Welcome to our business.\nPlease verify you email.\nYour One Time Password is: <span>${otp}</span>.`
+  const saveData = await User.create(data);
+  const session = await createUserSession(check);
 
-    // await sendEmail({email: email, subject: "Registration Verification", text: '', html: message}, []);
+  const response = {
+    saveData,
+    session,
+  };
 
-    return {
-        "data": response,
-        "metaData": {}
-    }
-}
+  const message = `Welcome to our business.\nPlease verify you email.\nYour One Time Password is: <span>${otp}</span>.`;
 
-module.exports = register
+  // await sendEmail({email: email, subject: "Registration Verification", text: '', html: message}, []);
+
+  return {
+    data: response,
+    metaData: {},
+  };
+};
+
+module.exports = register;

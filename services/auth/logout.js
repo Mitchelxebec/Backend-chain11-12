@@ -29,7 +29,7 @@ const logout = async (req, res, next) => {
       lastLogout: user.lastLogout,
     };
   } catch (error) {
-    return next(new ErrorResponse(`Logout failed: ${error.message}`, 500));
+    new ErrorResponse(`Logout failed: ${error.message}`, 500);
   }
 };
 
