@@ -43,7 +43,7 @@ const register = async (req, res, next) => {
   }
 
   const saveData = await User.create(data);
-  const session = await createUserSession(check);
+  const session = await createUserSession(saveData);
 
   const response = {
     saveData,
