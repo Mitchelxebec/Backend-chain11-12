@@ -11,11 +11,12 @@ const {
     logout
 } = require("../controllers/auth");
 
-const { validateLoginObj, validateRegisterObj, validateVerificationObj, validateOTPObj, ValidateResetPassword, validateforgotpassword,  validateLogoutObj} = require('../validators/auth');
+const { validateLoginObj, validateRegisterObj, validateVerificationObj, validateOTPObj, ValidateResetPassword, validateforgotpassword} = require('../validators/auth');
+const { protect } = require("../middlewares/admin");
     
 
 
-router.post("/logout", validateLogoutObj, logout);
+router.post("/logout", protect, logout);
 router.post('/login', validateLoginObj,  login);
 router.post('/register', validateRegisterObj, register);
 router.post('/verify', validateVerificationObj, verify);
