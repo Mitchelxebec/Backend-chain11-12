@@ -5,5 +5,4 @@ module.exports = {
     validateOTPObj: require("./resentOTP"),
     ValidateResetPassword: require("./resetPassword"),
     validateforgotpassword: require("./forgotpasswordObj"),
-    validateLogoutObj:require('./logout')
 };
