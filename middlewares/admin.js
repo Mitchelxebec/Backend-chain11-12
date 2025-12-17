@@ -34,8 +34,6 @@ exports.protect = asyncHandler(async (req, res, next) => {
         new ErrorResponse("Token invalid or expired. Please log in again", 401)
       );
     }
-
-    req.user = user;
     return next();
   } catch (error) {
     next(new ErrorResponse(`Authorization error: ${error}`, 400));
@@ -48,6 +46,15 @@ exports.verified = asyncHandler(async (req, res, next) => {
     next(new ErrorResponse(`Verify your account`, 400));
   }
   return next();
+
+});
+
+exports.hasRole = (...roles) => asyncHandler(async (req, res, next) => {
+    const userRole = req.user.role;
+    if (!roles.includes(userRole)) {
+        return next(new ErrorResponse(`You do not have permission to perform this action`, 403));
+    }
+    next();
 });
 
 exports.isAdmin = asyncHandler(async (req, res, next) => {

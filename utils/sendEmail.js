@@ -4,7 +4,7 @@ const sendEmail = async (options) => {
   const transporter = nodemailer.createTransport({
     host: process.env.MAIL_SERVER,
     port: process.env.MAIL_PORT,
-    secure: process.env.MAIL_SECURE,
+    secure: process.env.MAIL_SECURE === 'true',
     auth: {
       user: process.env.MAIL_USER,
       pass: process.env.MAIL_PASS,
@@ -12,7 +12,7 @@ const sendEmail = async (options) => {
   });
 
   const message = {
-    from: `Developer <akpe@venireapp.com>`,
+    from: `Developer <${process.env.MAIL_USER}>`,
     to: options.email,
     subject: options.subject,
     html: options.html,

@@ -7,7 +7,7 @@ const {
 } = require("../controllers/admin");
 
 const { validateDeleteUserObj } = require('../validators/admin');
-const { protect, verified, isAdmin } = require('../middlewares/admin');
+const { protect, verified, isAdmin, hasRole } = require('../middlewares/admin');
 
 const {
     addRole,
@@ -47,7 +47,7 @@ router.get('/roles', protect, verified,  isAdmin, getRoles);
 router.put('/role/update-role', protect, verified, isAdmin, validateUpdateRole, updateRole);
 router.delete('/roles/delete-role', protect, verified, isAdmin, validateDeleteRole, deleteRole);
 
-router.post('/action', protect, verified, validateAddAction, addAction);
+router.post('/action', protect, verified, hasRole('admin', 'superadmin'), validateAddAction, addAction);
 router.get('/actions',  protect, verified, getActions);
 router.put('/action/add-action-to-user', protect, verified, isAdmin, validateAddActiontoUser, removeActionfromUser);
 router.put('/action/remove-action-from-user',protect,verified, isAdmin, validateRemoveActionFromUser,addActionToUser);
