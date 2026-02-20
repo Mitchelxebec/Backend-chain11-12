@@ -13,7 +13,7 @@
 
 
 ### Task:
-    - Deploy this project on render (main branch - https://github.com/Akwanw3/Chain11-Backend-Project).
+    - Deploy this project on render (main branch - https://github.com/Mitchelxebec/Backend-chain11-12.git).
 ###  Task:
     - Create a postman documentation for the project, add everyone to it.
 ### Task:
