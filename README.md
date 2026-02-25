@@ -12,14 +12,20 @@
 ## Observe the log on your console to see the status of the server and database connection
 
 
-### Task:
-    - Deploy this project on render (main branch - https://github.com/Mitchelxebec/Backend-chain11-12.git).
-###  Task:
-    - Create a postman documentation for the project, add everyone to it.
-### Task:
-    - Write an admin middleware to check if a user has a list of roles or not.
-### Task:
-    -Create CRUD on Product model
-### Task:
-    -Create CRUD on Category model
-    
+### Assignment:
+ - Create a basic Restful API with ExpressJs in Node.
+ - 1 endpoint
+ - Request body
+    name = "your name"
+ - Response
+    {
+        "status": success,
+        "message": "Successful",
+        "data": {
+            "name": "your name"
+        }
+    }
+
+- submission
+-Create a branch on https://github.com/Mitchelxebec/Backend-chain11-12.git
+- push the assignment
