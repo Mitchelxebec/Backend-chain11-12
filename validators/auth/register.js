@@ -12,7 +12,6 @@ const registerSchema = Joi.object(
     }
 );
 
-
 const validateRegisterObj = async (req, res, next) => {
     try {
 

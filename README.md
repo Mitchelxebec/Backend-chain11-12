@@ -1,7 +1,7 @@
 # chain11-nodejs-expressjs-mongo
 
 ## Repository
-    - https://github.com/Akwanw3/Chain11-Backend-Project
+    - https://github.com/Mitchelxebec/Backend-chain11-12.git
 
 ## Clone this repository to your desired destination
 ## Open the terminal on the project folder
@@ -12,14 +12,23 @@
 ## Observe the log on your console to see the status of the server and database connection
 
 
-### Task:
-    - Deploy this project on render (main branch - https://github.com/Mitchelxebec/Backend-chain11-12.git).
-###  Task:
-    - Create a postman documentation for the project, add everyone to it.
-### Task:
-    - Write an admin middleware to check if a user has a list of roles or not.
-### Task:
-    -Create CRUD on Product model
-### Task:
-    -Create CRUD on Category model
-    
+### Assignment:
+ - Create a basic Restful API with ExpressJs in Node.
+ - 1 endpoint
+ - Request body
+    name = "your name"
+    amount = a number between 50 and 500
+ - Response
+    {
+        "status": success,
+        "message": "Successful",
+        "data": {
+            "name": "your name",
+            "amount": amount/100
+        }
+    }
+
+Submission:
+- Create a branch on https://github.com/Mitchelxebec/Backend-chain11-12.git
+- push the assignment into the branch you created
+- Raise a PR(pull request) to assignment branch
